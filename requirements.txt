@@ -1,0 +1,6 @@
+streamlit
+streamlit-audiorecorder
+openai
+python-dotenv
+qdrant_client
+pydub
