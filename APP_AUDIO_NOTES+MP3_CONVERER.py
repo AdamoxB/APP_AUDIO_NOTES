@@ -16,7 +16,7 @@ if 'QDRANT_API_KEY' in st.secrets:
     env['QDRANT_API_KEY'] = st.secrets['QDRANT_API_KEY']
 ###
 
-EMBEDDING_MODEL = "text-embedding-3-large"
+EMBEDDING_MODEL = "text-embedding-3-small"#large/small
 EMBEDDING_DIM = 3072
 AUDIO_TRANSCRIBE_MODEL = "whisper-1"
 QDRANT_COLLECTION_NAME = "notes"
