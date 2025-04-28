@@ -18,5 +18,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit --allow-empty -m "Empty commit to keep Streamlit APP_AUDIO_NOTES+MP3_CONVERER active"
+          git commit --allow-empty -m "Empty commit to keep Streamlit app active"
           git push 
