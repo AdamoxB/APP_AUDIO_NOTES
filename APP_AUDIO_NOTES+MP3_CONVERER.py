@@ -36,9 +36,9 @@ def transcribe_audio(audio_bytes):
 #
 # MAIN
 #
-# st.set_page_config(page_title="Audio Notatki", layout="wide")#layout="centered")
+st.set_page_config(layout="wide")#layout="centered")
 
-st.set_page_config(page_title="Audio Notatki", layout="centered")
+# st.set_page_config(page_title="Audio Notatki", layout="centered")
 
 if "note_audio_bytes" not in st.session_state:
     st.session_state["note_audio_bytes"] = None
