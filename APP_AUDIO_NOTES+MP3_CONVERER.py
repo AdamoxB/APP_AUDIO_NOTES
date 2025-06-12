@@ -10,11 +10,7 @@ from dotenv import dotenv_values, load_dotenv # do czytania z plików .env
 from my_package.api_key_loader import configure_api_key, web_api#, get_openai_client
 from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
 
-from my_package.tips import tipsy #, get_openai_client
-from my_package.model__personality import model__personality
 
-from my_package.usd_kurs import get_usd_to_pln
-from my_package.model_pricings import model_pricings
 import os
 import requests# do pobrania kursu usd
 
