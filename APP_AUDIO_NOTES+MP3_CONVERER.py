@@ -9,6 +9,8 @@ from openai import OpenAI
 from dotenv import dotenv_values, load_dotenv 
 from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
 # Wczytaj dane z pliku .env
+st.set_page_config(layout="wide")
+
 env = dotenv_values(".env")
 api_magic()
 ##############
@@ -36,7 +38,6 @@ def transcribe_audio(audio_bytes):
 #
 # MAIN
 #
-st.set_page_config(layout="wide")#layout="centered")
 
 # st.set_page_config(page_title="Audio Notatki", layout="centered")
 
