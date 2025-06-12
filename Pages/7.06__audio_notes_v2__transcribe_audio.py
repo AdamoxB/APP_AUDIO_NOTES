@@ -4,13 +4,24 @@ from audiorecorder import audiorecorder  # type: ignore
 from dotenv import dotenv_values
 from openai import OpenAI
 
-env = dotenv_values(r"C:\Users\biela\Desktop\od_zera_do_ai\modul_7\gitek.env")
+##############
+from openai import OpenAI
+from dotenv import dotenv_values, load_dotenv 
+from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
+# Wczytaj dane z pliku .env
+st.set_page_config(layout="wide")
+
+env = dotenv_values(".env")
+api_magic()
+##############
+
+# env = dotenv_values(r"C:\Users\biela\Desktop\od_zera_do_ai\modul_7\gitek.env")
 
 AUDIO_TRANSCRIBE_MODEL = "whisper-1"
 
 @st.cache_resource
-def get_openai_client():
-    return OpenAI(api_key=env["OPENAI_API_KEY"])
+# def get_openai_client():
+#     return OpenAI(api_key=env["OPENAI_API_KEY"])
 
 def transcribe_audio(audio_bytes):
     openai_client = get_openai_client()
@@ -27,8 +38,9 @@ def transcribe_audio(audio_bytes):
 #
 # MAIN
 #
-st.set_page_config(page_title="Audio Notatki", layout="centered")
 
+# st.set_page_config(page_title="Audio Notatki", layout="centered")
+# Session state initialization
 if "note_audio_bytes" not in st.session_state:
     st.session_state["note_audio_bytes"] = None
 
