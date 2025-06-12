@@ -1,0 +1,1 @@
+print("hej kursanci to wyślemy na gita")
