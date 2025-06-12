@@ -31,7 +31,7 @@ def web_api():
 
 def configure_api_key(env):
     with st.sidebar:
-        col1, col2 = st.columns([9, 4])
+        col1, col2 = st.columns([19, 1])
         with col1:
             with st.expander(f"Wczytaj API_key"):
                 tab1, tab2, tab3 = st.tabs(["Lokal", "Upload_API_KEY", "WEB"])
@@ -82,11 +82,11 @@ def configure_api_key(env):
                         else:
                             st.error("Nie znaleziono klucza API OpenAI. Ustaw go w streamlit > App settings > Secrets.")
 
-        with col2:
-            if st.button("WEB_API"):
-                if 'OPENAI_API_KEY' in st.secrets:
-                    st.session_state["openai_api_key"] = st.secrets['OPENAI_API_KEY']
-                    env['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+        # with col2:
+        #     if st.button("WEB_API"):
+        #         if 'OPENAI_API_KEY' in st.secrets:
+        #             st.session_state["openai_api_key"] = st.secrets['OPENAI_API_KEY']
+        #             env['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
     # Ochrona klucza API
     if not st.session_state.get("openai_api_key"):
