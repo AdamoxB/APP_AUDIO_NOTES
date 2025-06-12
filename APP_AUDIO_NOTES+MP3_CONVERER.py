@@ -20,7 +20,7 @@ import requests# do pobrania kursu usd
 import streamlit as st
 from audiorecorder import audiorecorder
 from io import BytesIO
-
+st.set_page_config(page_title="Audio Notatki", layout="centered")
 ##############
 from openai import OpenAI
 from dotenv import dotenv_values, load_dotenv 
@@ -40,7 +40,7 @@ if 'OPENAI_API_KEY' not in st.secrets:
 
 ############
 
-st.set_page_config(page_title="Audio Notatki", layout="centered")
+
 
 st.title("Audio Notatki")
 # note_audio = audiorecorder(
