@@ -31,7 +31,7 @@ def web_api():
 
 def configure_api_key(env):
     with st.sidebar:
-        col1, col2 = st.columns([19, 1])
+        col1, col2 = st.columns([9, 0])
         with col1:
             with st.expander(f"Wczytaj API_key"):
                 tab1, tab2, tab3 = st.tabs(["Lokal", "Upload_API_KEY", "WEB"])
