@@ -81,13 +81,6 @@ def configure_api_key(env):
                             st.success("Klucz API już jest w sesji")
                         else:
                             st.error("Nie znaleziono klucza API OpenAI. Ustaw go w streamlit > App settings > Secrets.")
-
-        with col2:
-            if st.button("WEB_API"):
-                if 'OPENAI_API_KEY' in st.secrets:
-                    st.session_state["openai_api_key"] = st.secrets['OPENAI_API_KEY']
-                    env['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
-
     # Ochrona klucza API
     if not st.session_state.get("openai_api_key"):
         if "OPENAI_API_KEY" in env:
