@@ -9,7 +9,7 @@ from openai import OpenAI
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, Distance, VectorParams
 # from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 env = dotenv_values(".env")
 
 
