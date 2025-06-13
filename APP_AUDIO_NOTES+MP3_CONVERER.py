@@ -52,7 +52,7 @@ if "note_audio_bytes" not in st.session_state:
 if "note_audio_text" not in st.session_state:
     st.session_state["note_audio_text"] = ""
 
-st.title("Audio Notatki")
+st.title("Audio~Notatki")
 note_audio = audiorecorder(
     start_prompt="Nagraj notatkę",
     stop_prompt="Zatrzymaj nagrywanie",

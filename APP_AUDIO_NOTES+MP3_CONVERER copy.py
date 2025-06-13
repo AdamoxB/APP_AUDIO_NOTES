@@ -107,7 +107,7 @@ def list_notes_from_db(query=None):
 #    
 #st.title("Audio Notatki AI")#TYTUŁ
 
-st.set_page_config(page_title="Audio Notatki", layout="centered")
+st.set_page_config(page_title="Audio!Notatki", layout="centered")
 # OpenAI API key protection
 if not st.session_state.get("openai_api_key"):
     if "OPENAI_API_KEY" in env:
