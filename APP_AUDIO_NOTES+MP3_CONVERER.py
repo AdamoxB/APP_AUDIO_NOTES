@@ -10,7 +10,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, Distance, VectorParams
 from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
 
-st.set_page_config(page_title="Audio!Notatki", layout="wide")#centered")
+st.set_page_config(page_title="Audio!Notatki", layout="centered")#wide")
 
 env = dotenv_values(".env")
 
