@@ -4,12 +4,22 @@ from audiorecorder import audiorecorder  # type: ignore
 from dotenv import dotenv_values
 from openai import OpenAI
 
+##############
+from openai import OpenAI
+from dotenv import dotenv_values, load_dotenv 
+from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
+# Wczytaj dane z pliku .env
+st.set_page_config(page_title="Audio Notatki", layout="wide")#layout="centered")
 env = dotenv_values(".env")
+api_magic()
+##############
+
+# env = dotenv_values(".env")
 
 AUDIO_TRANSCRIBE_MODEL = "whisper-1"
 
-def get_openai_client():
-    return OpenAI(api_key=st.session_state["openai_api_key"])
+# def get_openai_client():
+#     return OpenAI(api_key=st.session_state["openai_api_key"])
 
 def transcribe_audio(audio_bytes):
     openai_client = get_openai_client()
@@ -29,16 +39,16 @@ def transcribe_audio(audio_bytes):
 #
 st.set_page_config(page_title="Audio Notatki", layout="centered")
 
-# OpenAI API key protection
-if not st.session_state.get("openai_api_key"):
-    if "OPENAI_API_KEY" in env:
-        st.session_state["openai_api_key"] = env["OPENAI_API_KEY"]
+# # OpenAI API key protection
+# if not st.session_state.get("openai_api_key"):
+#     if "OPENAI_API_KEY" in env:
+#         st.session_state["openai_api_key"] = env["OPENAI_API_KEY"]
 
-    else:
-        st.info("Dodaj swój klucz API OpenAI aby móc korzystać z tej aplikacji")
-        st.session_state["openai_api_key"] = st.text_input("Klucz API", type="password")
-        if st.session_state["openai_api_key"]:
-            st.rerun()
+#     else:
+#         st.info("Dodaj swój klucz API OpenAI aby móc korzystać z tej aplikacji")
+#         st.session_state["openai_api_key"] = st.text_input("Klucz API", type="password")
+#         if st.session_state["openai_api_key"]:
+#             st.rerun()
 
 if not st.session_state.get("openai_api_key"):
     st.stop()

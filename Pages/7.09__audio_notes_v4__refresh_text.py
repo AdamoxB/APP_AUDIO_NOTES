@@ -2,15 +2,26 @@ from io import BytesIO
 import streamlit as st
 from audiorecorder import audiorecorder  # type: ignore
 from dotenv import dotenv_values
-from hashlib import md5
+from hashlib import md5#V4 czy zmie niło nam się audio
 from openai import OpenAI
 
+
+##############
+from openai import OpenAI
+from dotenv import dotenv_values, load_dotenv 
+from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
+# Wczytaj dane z pliku .env
+st.set_page_config(layout="wide")
+
 env = dotenv_values(".env")
+api_magic()     
+##############
+# env = dotenv_values(".env")
 
 AUDIO_TRANSCRIBE_MODEL = "whisper-1"
 
-def get_openai_client():
-    return OpenAI(api_key=st.session_state["openai_api_key"])
+# def get_openai_client():
+#     return OpenAI(api_key=st.session_state["openai_api_key"])
 
 def transcribe_audio(audio_bytes):
     openai_client = get_openai_client()
@@ -30,23 +41,23 @@ def transcribe_audio(audio_bytes):
 #
 st.set_page_config(page_title="Audio Notatki", layout="centered")
 
-# OpenAI API key protection
-if not st.session_state.get("openai_api_key"):
-    if "OPENAI_API_KEY" in env:
-        st.session_state["openai_api_key"] = env["OPENAI_API_KEY"]
+# # OpenAI API key protection
+# if not st.session_state.get("openai_api_key"):
+#     if "OPENAI_API_KEY" in env:
+#         st.session_state["openai_api_key"] = env["OPENAI_API_KEY"]
 
-    else:
-        st.info("Dodaj swój klucz API OpenAI aby móc korzystać z tej aplikacji")
-        st.session_state["openai_api_key"] = st.text_input("Klucz API", type="password")
-        if st.session_state["openai_api_key"]:
-            st.rerun()
+#     else:
+#         st.info("Dodaj swój klucz API OpenAI aby móc korzystać z tej aplikacji")
+#         st.session_state["openai_api_key"] = st.text_input("Klucz API", type="password")
+#         if st.session_state["openai_api_key"]:
+#             st.rerun()
 
 if not st.session_state.get("openai_api_key"):
     st.stop()
 
 # Session state initialization
-if "note_audio_bytes_md5" not in st.session_state:
-    st.session_state["note_audio_bytes_md5"] = None
+if "note_audio_bytes_md5" not in st.session_state:#V4 czy zmie niło nam się audio
+    st.session_state["note_audio_bytes_md5"] = None#V4 czy zmie niło nam się audio
 
 if "note_audio_bytes" not in st.session_state:
     st.session_state["note_audio_bytes"] = None
@@ -64,10 +75,10 @@ if note_audio:
     note_audio.export(audio, format="mp3")
     st.session_state["note_audio_bytes"] = audio.getvalue()
 
-    current_md5 = md5(st.session_state["note_audio_bytes"]).hexdigest()
-    if st.session_state["note_audio_bytes_md5"] != current_md5:
-        st.session_state["note_audio_text"] = ""
-        st.session_state["note_audio_bytes_md5"] = current_md5
+    current_md5 = md5(st.session_state["note_audio_bytes"]).hexdigest()#V4 przekaże bity audio do md5
+    if st.session_state["note_audio_bytes_md5"] != current_md5:#V4 czy zczy nie jest równe i się zmieniło
+        st.session_state["note_audio_text"] = ""#V4 resetujemy
+        st.session_state["note_audio_bytes_md5"] = current_md5#V4 zapisujemy na nową wartość
 
     st.audio(st.session_state["note_audio_bytes"], format="audio/mp3")
 

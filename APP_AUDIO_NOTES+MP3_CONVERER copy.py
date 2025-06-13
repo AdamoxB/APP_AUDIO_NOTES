@@ -4,7 +4,7 @@ import streamlit as st
 from audiorecorder import audiorecorder  # type: ignore
 
 from dotenv import dotenv_values
-from hashlib import md5
+from hashlib import md5#V4 czy zmie niło nam się audio
 from openai import OpenAI
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, Distance, VectorParams
@@ -76,6 +76,7 @@ def add_note_to_db(note_text):
 def list_notes_from_db(query=None):
     qdrant_client = get_qdrant_client()
     if not query:
+        #daj mi pierwsze 40 elementów
         notes = qdrant_client.scroll(collection_name=QDRANT_COLLECTION_NAME, limit=40)[0]
         result = []
         for note in notes:
@@ -125,8 +126,8 @@ if not st.session_state.get("openai_api_key"):
 if "openai_api_key" not in st.session_state:
     st.session_state["openai_api_key"] = None
 
-if "note_audio_bytes_md5" not in st.session_state:
-    st.session_state["note_audio_bytes_md5"] = None
+if "note_audio_bytes_md5" not in st.session_state:#V4 czy zmie niło nam się audio
+    st.session_state["note_audio_bytes_md5"] = None#V4 czy zmie niło nam się audio
 
 if "note_audio_bytes" not in st.session_state:
     st.session_state["note_audio_bytes"] = None
@@ -147,7 +148,7 @@ add_tab, upload_tab, search_tab = st.tabs(["Dodaj notatkę", "Wczytaj nagranie m
 
 # Zakładka: Dodaj notatkę
 
-# v1 - nagrywanie i odtwarzanie głosu.
+    # v1 - nagrywanie i odtwarzanie głosu.
 with add_tab:
     note_audio = audiorecorder(start_prompt="Nagraj notatkę", stop_prompt="Zatrzymaj nagrywanie")
 
@@ -157,11 +158,11 @@ with add_tab:
         # note_audio_bytes = audio.getvalue()
         st.session_state["note_audio_bytes"] = audio.getvalue()
 
-        current_md5 = md5(st.session_state["note_audio_bytes"]).hexdigest()
-        if st.session_state["note_audio_bytes_md5"] != current_md5:
-            st.session_state["note_audio_text"] = ""
-            st.session_state["note_text"] = ""
-            st.session_state["note_audio_bytes_md5"] = current_md5
+        current_md5 = md5(st.session_state["note_audio_bytes"]).hexdigest()#V4 przekaże bity audio do md5
+        if st.session_state["note_audio_bytes_md5"] != current_md5:#V4 czy zczy nie jest równe i się zmieniło
+            st.session_state["note_audio_text"] = ""#V4 resetujemy
+            st.session_state["note_text"] = ""#v5
+            st.session_state["note_audio_bytes_md5"] = current_md5#V4 zapisujemy na nową wartość
 
         st.audio(st.session_state["note_audio_bytes"], format="audio/mp3")
 

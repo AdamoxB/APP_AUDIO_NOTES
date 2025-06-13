@@ -21,13 +21,9 @@ from my_package.api_key_loader import configure_api_key, web_api#, get_openai_cl
 # Wczytaj dane z pliku .env
 env = dotenv_values(".env")
 
-web_api()
 
-if 'OPENAI_API_KEY' not in st.secrets:
-    configure_api_key(env)
+configure_api_key(env)
 
-    # def get_openai_client():
-    #     return OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def get_openai_client():
     return OpenAI(api_key=st.session_state["openai_api_key"])
