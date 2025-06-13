@@ -144,7 +144,7 @@ if "note_audio_text" not in st.session_state:
 
 
 
-st.title("Audio Notatki AI")
+st.title("Audio_Notatki_AI")
 assure_db_collection_exists()
 
 # Tworzenie zakładek
