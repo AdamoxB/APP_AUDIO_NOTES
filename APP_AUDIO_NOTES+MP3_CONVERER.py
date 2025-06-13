@@ -13,7 +13,7 @@ from my_package.api_key_loader_magic import configure_api_key, web_api, get_open
 st.set_page_config(page_title="Audio!Notatki", layout="centered")#wide")
 
 env = dotenv_values(".env")
-
+api_magic()  
 ### Secrets using Streamlit Cloud Mechanism
 # https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management
 if 'QDRANT_URL' in st.secrets:
