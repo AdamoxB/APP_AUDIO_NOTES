@@ -9,10 +9,8 @@ from openai import OpenAI
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, Distance, VectorParams
 # from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
+
 env = dotenv_values(".env")
-
-st.set_page_config(layout="wide")
-
 
 ### Secrets using Streamlit Cloud Mechanism
 # https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management
@@ -111,7 +109,7 @@ def list_notes_from_db(query=None):
 #    
 #st.title("Audio Notatki AI")#TYTUŁ
 
-st.set_page_config(page_title="Audio!Notatki", layout="centered")
+st.set_page_config(page_title="Audio!Notatki", layout="wide")#centered")
 # OpenAI API key protection
 if not st.session_state.get("openai_api_key"):
     if "OPENAI_API_KEY" in env:
