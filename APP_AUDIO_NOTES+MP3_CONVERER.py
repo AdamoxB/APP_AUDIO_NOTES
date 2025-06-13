@@ -8,8 +8,12 @@ from hashlib import md5#V4 czy zmie niło nam się audio
 from openai import OpenAI
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, Distance, VectorParams
-
+from my_package.api_key_loader_magic import configure_api_key, web_api, get_openai_client, api_magic
+st.set_page_config(layout="wide")
 env = dotenv_values(".env")
+
+
+
 ### Secrets using Streamlit Cloud Mechanism
 # https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management
 if 'QDRANT_URL' in st.secrets:
